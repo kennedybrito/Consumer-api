@@ -31,15 +31,16 @@ public class App {
 	
 
 	
-	for (Map<String, String> map : listadeFilmes) {
+	for (int i = 0; i<5 ; i++) {
+		Map<String, String> map = listadeFilmes.get(i);
 		
 		// pegando a imagem na url 
-		String urlImagem = map.get("image");
+		String urlImagem = map.get("image").replaceAll("(@+)(.*).jpg$", "$1.jpg");
 		String titulo = map.get("title");
 		
 		// nomeando a imagen nova 
 		InputStream inputStream = new URL(urlImagem).openStream();
-		String nomeArquivo = titulo + ".png";
+		String nomeArquivo = "novapasta/" + titulo + ".png";
 		
 		// gerando a imagem
 		GeradoraDeFigurinhas geradora = new GeradoraDeFigurinhas();
